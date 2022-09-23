@@ -80,8 +80,19 @@ The dataset after registeration into the workspace looks like this:
 We used `AUC_weighted` metric seems the one we got the best result with. For the training as mentioned above, we use:
 
 - n_cross_validations = 2 ( cross validation number to execute )
+
+  - We used this value to perform k-fold cross-validation, This parameter sets how many cross validations to perform, based on the same number of folds. In the following code, two folds for cross-validation are defined. Hence, two different trainings, each training using 1/2 of the data, and each validation using 1/2 of the data with a different holdout fold each time.
+
 - experiment_timeout_minutes = 30 ( max experiment timeout period )
+
+  - Seems a reasonable timeout period specially when choosing a fast compute clusters
+
 - primary_metric = AUC_weighted ( arithmetic mean of the score for each class, weighted by the number of true instances in each class )
+
+  - We used `AUC_weighted` metric seems the one we got the best result more than the other different metrics.
+
+    
+
 
 ```python
 automl_settings = {
